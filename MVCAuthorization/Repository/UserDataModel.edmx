@@ -1,0 +1,1274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Models.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CityMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="StateID" Type="int" />
+        </EntityType>
+        <EntityType Name="CountryMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="CountryCode" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Practice.dbo.CustomerRawInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CustomerRawInfo">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="255" />
+          <Property Name="Email" Type="varchar" MaxLength="255" />
+          <Property Name="Company" Type="varchar" MaxLength="255" />
+          <Property Name="Street" Type="varchar" MaxLength="255" />
+          <Property Name="City" Type="varchar" MaxLength="255" />
+          <Property Name="Region" Type="varchar" MaxLength="50" />
+          <Property Name="Country" Type="varchar" MaxLength="100" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="CustomersID" />
+          </Key>
+          <Property Name="CustomersID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SurName" Type="varchar" MaxLength="255" />
+          <Property Name="Full Name" Type="varchar" MaxLength="255" />
+          <Property Name="Email" Type="varchar" MaxLength="255" />
+          <Property Name="DOJ" Type="varchar" MaxLength="255" />
+          <Property Name="Company" Type="varchar" MaxLength="255" />
+          <Property Name="Address" Type="varchar" MaxLength="255" />
+          <Property Name="Country" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Registrations">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="RegId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentId" Type="varchar" MaxLength="35" Nullable="false" />
+          <Property Name="StdFirstName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="StdLastName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="StdPassword" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="StdEmail" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="StdMobile" Type="decimal" Precision="12" Scale="0" Nullable="false" />
+          <Property Name="StdAddress" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="StdGender" Type="int" Nullable="false" />
+          <Property Name="StdDateOfBirth" Type="date" Nullable="false" />
+          <Property Name="StdState" Type="int" Nullable="false" />
+          <Property Name="StdCountry" Type="int" Nullable="false" />
+          <Property Name="StdProfilePic" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="StdCreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="StdRegisteredDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Practice.dbo.'Sheet 1$'' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="'Sheet 1$'">
+          <Property Name="ProductId" Type="nvarchar" MaxLength="255" />
+          <Property Name="Category" Type="nvarchar" MaxLength="255" />
+          <Property Name="MainCategory" Type="nvarchar" MaxLength="255" />
+          <Property Name="TaxTarifCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="SupplierName" Type="nvarchar" MaxLength="255" />
+          <Property Name="WeightMeasure" Type="nvarchar" MaxLength="255" />
+          <Property Name="WeightUnit" Type="nvarchar" MaxLength="255" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="DateOfSale" Type="nvarchar" MaxLength="255" />
+          <Property Name="ProductPicUrl" Type="nvarchar" MaxLength="255" />
+          <Property Name="Status" Type="float" />
+          <Property Name="Quantity" Type="nvarchar" MaxLength="255" />
+          <Property Name="UoM" Type="nvarchar" MaxLength="255" />
+          <Property Name="CurrencyCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="Price" Type="nvarchar" MaxLength="255" />
+          <Property Name="Width" Type="nvarchar" MaxLength="255" />
+          <Property Name="Depth" Type="nvarchar" MaxLength="255" />
+          <Property Name="Height" Type="nvarchar" MaxLength="255" />
+          <Property Name="DimUnit" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+        <EntityType Name="StateMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="CountryID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Practice.dbo.tbl_ColorTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_ColorTable">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="HexCode" />
+            <PropertyRef Name="DecimalCode" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="HexCode" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="DecimalCode" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Practice.dbo.Tbl_Customers_M' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Tbl_Customers_M">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CUSTOMER_CODE" Type="varchar" MaxLength="255" />
+          <Property Name="TITLE" Type="varchar" MaxLength="255" />
+          <Property Name="CUSTOMER_NAME" Type="varchar" MaxLength="255" />
+          <Property Name="ADDRESS1" Type="varchar" MaxLength="255" />
+          <Property Name="ADDRESS2" Type="varchar" MaxLength="255" />
+          <Property Name="ADDRESS3" Type="varchar" MaxLength="255" />
+          <Property Name="CITY" Type="varchar" MaxLength="255" />
+          <Property Name="District" Type="varchar" MaxLength="255" />
+          <Property Name="REGION" Type="varchar" MaxLength="255" />
+          <Property Name="GST_STATE_NAME" Type="varchar" MaxLength="255" />
+          <Property Name="GST_Tin_Number" Type="varchar" MaxLength="255" />
+          <Property Name="REGION_DESC" Type="varchar" MaxLength="255" />
+          <Property Name="POSTAL_CODE" Type="varchar" MaxLength="255" />
+          <Property Name="GST_NUMBER" Type="varchar" MaxLength="255" />
+          <Property Name="PAN_NO" Type="varchar" MaxLength="255" />
+          <Property Name="Segment_Name" Type="varchar" MaxLength="255" />
+          <Property Name="Sales_Office" Type="varchar" MaxLength="255" />
+          <Property Name="HQCODE" Type="varchar" MaxLength="255" />
+          <Property Name="HQNAME" Type="varchar" MaxLength="255" />
+          <Property Name="Moblie_No" Type="varchar" MaxLength="255" />
+          <Property Name="EmailId" Type="varchar" MaxLength="255" />
+          <Property Name="TransDate" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Practice.dbo.Tbl_Emp_Master_M' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Tbl_Emp_Master_M">
+          <Property Name="EmpId" Type="bigint" />
+          <Property Name="Title" Type="varchar" MaxLength="255" />
+          <Property Name="FirstName" Type="varchar" MaxLength="255" />
+          <Property Name="MidName" Type="varchar" MaxLength="255" />
+          <Property Name="LastName" Type="varchar" MaxLength="255" />
+          <Property Name="FatherName" Type="varchar" MaxLength="255" />
+          <Property Name="BirthDate" Type="datetime" />
+          <Property Name="DateMarried" Type="datetime" />
+          <Property Name="State" Type="varchar" MaxLength="255" />
+          <Property Name="PagerNo" Type="varchar" MaxLength="255" />
+          <Property Name="JoinDate" Type="datetime" />
+          <Property Name="ConfirmedDate" Type="datetime" />
+          <Property Name="LeavingDate" Type="datetime" />
+          <Property Name="RetireDate" Type="datetime" />
+          <Property Name="Email" Type="varchar" MaxLength="255" />
+          <Property Name="Email2" Type="varchar" MaxLength="255" />
+          <Property Name="MobileNo" Type="bigint" />
+          <Property Name="MobileNo2" Type="bigint" />
+          <Property Name="ResPhone" Type="varchar" MaxLength="255" />
+          <Property Name="ResPhone2" Type="varchar" MaxLength="255" />
+          <Property Name="add1" Type="varchar" MaxLength="255" />
+          <Property Name="add2" Type="varchar" MaxLength="255" />
+          <Property Name="add3" Type="varchar" MaxLength="255" />
+          <Property Name="PIN" Type="varchar" MaxLength="255" />
+          <Property Name="City" Type="varchar" MaxLength="255" />
+          <Property Name="Permanent_add1" Type="varchar" MaxLength="255" />
+          <Property Name="Permanent_add2" Type="varchar" MaxLength="255" />
+          <Property Name="Permanent_add3" Type="varchar" MaxLength="255" />
+          <Property Name="Permanent_PIN" Type="varchar" MaxLength="255" />
+          <Property Name="Permanent_City" Type="varchar" MaxLength="255" />
+          <Property Name="married" Type="varchar" MaxLength="255" />
+          <Property Name="gender" Type="varchar" MaxLength="255" />
+          <Property Name="bloodGroup" Type="varchar" MaxLength="255" />
+          <Property Name="PhotoURL" Type="varchar" MaxLength="255" />
+          <Property Name="BankAcNo" Type="varchar" MaxLength="255" />
+          <Property Name="BankCode" Type="varchar" MaxLength="255" />
+          <Property Name="ESI_NO" Type="varchar" MaxLength="255" />
+          <Property Name="GPF_NO" Type="varchar" MaxLength="255" />
+          <Property Name="EmpType" Type="varchar" MaxLength="255" />
+          <Property Name="UserId" Type="varchar" MaxLength="255" />
+          <Property Name="UPassword" Type="varchar" MaxLength="255" />
+          <Property Name="PAN" Type="varchar" MaxLength="255" />
+          <Property Name="IsMktg" Type="varchar" MaxLength="255" />
+          <Property Name="CONSIDER" Type="varchar" MaxLength="255" />
+          <Property Name="Emp_Photo" Type="varchar" MaxLength="255" />
+          <Property Name="OfficeNo" Type="varchar" MaxLength="255" />
+          <Property Name="Extension" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="Status" Type="varchar" MaxLength="255" />
+          <Property Name="Bank" Type="varchar" MaxLength="255" />
+          <Property Name="IsIILEmp" Type="varchar" MaxLength="255" />
+          <Property Name="ESIApplicable" Type="varchar" MaxLength="255" />
+          <Property Name="District" Type="varchar" MaxLength="255" />
+          <Property Name="UAN_NO" Type="varchar" MaxLength="255" />
+          <Property Name="NameasPerPF" Type="varchar" MaxLength="255" />
+          <Property Name="FatherNameasPerPF" Type="varchar" MaxLength="255" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Practice.dbo.tbl_Emp_Password' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_Emp_Password">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpId" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_Gender_Master">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="10" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Tbl_Password_Log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="HashCode" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ExpiredOn" Type="datetime" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Practice.dbo.tbl_product_details' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tbl_product_details">
+          <Property Name="productId" Type="varchar" MaxLength="50" />
+          <Property Name="Category" Type="varchar" MaxLength="50" />
+          <Property Name="MainCategory" Type="varchar" MaxLength="50" />
+          <Property Name="TaxTafficCode" Type="varchar" MaxLength="50" />
+          <Property Name="SupplierName" Type="varchar" MaxLength="50" />
+          <Property Name="WeightMeasure" Type="varchar" MaxLength="50" />
+          <Property Name="WeightUnit" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="DateOfSale" Type="varchar" MaxLength="50" />
+          <Property Name="ProductPicUrl" Type="varchar" MaxLength="100" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="Quantity" Type="varchar" MaxLength="50" />
+          <Property Name="UOM" Type="varchar" MaxLength="50" />
+          <Property Name="CurrencyCode" Type="varchar" MaxLength="50" />
+          <Property Name="Price" Type="varchar" MaxLength="50" />
+        </EntityType>-->
+        <EntityType Name="tbl_std_pass">
+          <Key>
+            <PropertyRef Name="StdId" />
+          </Key>
+          <Property Name="StdId" Type="varchar" MaxLength="35" Nullable="false" />
+          <Property Name="PassHash" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_StudentInfo">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentId" Type="varchar" MaxLength="35" Nullable="false" />
+          <Property Name="StudentName" Type="varchar" MaxLength="50" />
+          <Property Name="DateOfBirth" Type="date" />
+          <Property Name="Gender" Type="int" />
+          <Property Name="Address" Type="varchar" MaxLength="1000" />
+          <Property Name="ContactEmail" Type="varchar" MaxLength="50" />
+          <Property Name="ContactMobile" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="AdditionalComments" Type="varchar" MaxLength="1000" />
+          <Property Name="IsResgistered" Type="bit" />
+          <Property Name="ResgisteredDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="PasswordGenerated" Type="bit" />
+          <Property Name="CreatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Tbl_UserPassword">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="HashCode" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ExpireDate" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_UserRoles">
+          <Key>
+            <PropertyRef Name="UserRoleId" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserRoleId" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="UserRoleName" Type="varchar" MaxLength="20" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Practice.dbo.tblCustomer2' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tblCustomer2">
+          <Property Name="CustomerID" Type="float" />
+          <Property Name="CustomerName" Type="nvarchar" MaxLength="255" />
+          <Property Name="ContactName" Type="nvarchar" MaxLength="255" />
+          <Property Name="Address" Type="nvarchar" MaxLength="255" />
+          <Property Name="City" Type="nvarchar" MaxLength="255" />
+          <Property Name="PostalCode" Type="float" />
+          <Property Name="Country" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+        <EntityType Name="tblCustomers">
+          <Key>
+            <PropertyRef Name="tblCustomersID" />
+          </Key>
+          <Property Name="tblCustomersID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="uniqueidentifier" />
+          <Property Name="SurName" Type="varchar" MaxLength="255" />
+          <Property Name="UserName" Type="varchar" MaxLength="255" />
+          <Property Name="EmailId" Type="varchar" MaxLength="255" />
+          <Property Name="DOB" Type="varchar" MaxLength="255" />
+          <Property Name="DOJ" Type="varchar" MaxLength="255" />
+          <Property Name="Phone" Type="varchar" MaxLength="13" />
+          <Property Name="Address" Type="varchar" MaxLength="255" />
+          <Property Name="City" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="USERS">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Roles" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CityMaster_StateMaster">
+          <End Role="StateMaster" Type="Self.StateMaster" Multiplicity="0..1" />
+          <End Role="CityMaster" Type="Self.CityMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StateMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CityMaster">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registrations_tbl_Gender_Master">
+          <End Role="tbl_Gender_Master" Type="Self.tbl_Gender_Master" Multiplicity="1" />
+          <End Role="Registrations" Type="Self.Registrations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Gender_Master">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Registrations">
+              <PropertyRef Name="StdGender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StateMaster_CountryMaster">
+          <End Role="CountryMaster" Type="Self.CountryMaster" Multiplicity="0..1" />
+          <End Role="StateMaster" Type="Self.StateMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StateMaster">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="RemoveNumericCharacters" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+          <Parameter Name="Temp" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_GET_PRODUCT_DETAILS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PRODUCTID" Type="varchar" Mode="In" />
+          <Parameter Name="CATEGORY" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_GET_PRODUCT_INFO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_INSERT_PRODUCT_INFO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PRODUCTID" Type="varchar" Mode="In" />
+          <Parameter Name="CATEGORY" Type="varchar" Mode="In" />
+          <Parameter Name="MAINCATEGORY" Type="varchar" Mode="In" />
+          <Parameter Name="TAXTAFFICCODE" Type="varchar" Mode="In" />
+          <Parameter Name="SUPPLIERNAME" Type="varchar" Mode="In" />
+          <Parameter Name="WEIGHTMEASURE" Type="varchar" Mode="In" />
+          <Parameter Name="WEIGHTUNIT" Type="varchar" Mode="In" />
+          <Parameter Name="DESCRIPTION" Type="varchar" Mode="In" />
+          <Parameter Name="NAME" Type="varchar" Mode="In" />
+          <Parameter Name="DATEOFSALE" Type="varchar" Mode="In" />
+          <Parameter Name="PRODUCTPICURL" Type="varchar" Mode="In" />
+          <Parameter Name="STATUS" Type="varchar" Mode="In" />
+          <Parameter Name="QUANTITY" Type="varchar" Mode="In" />
+          <Parameter Name="UOM" Type="varchar" Mode="In" />
+          <Parameter Name="CURRENCYCODE" Type="varchar" Mode="In" />
+          <Parameter Name="PRICE" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_SAVESTUDENTREGISTERDETAILS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="STUDENTID" Type="varchar" Mode="In" />
+          <Parameter Name="STUDENTNAME" Type="varchar" Mode="In" />
+          <Parameter Name="DATEOFBIRTH" Type="date" Mode="In" />
+          <Parameter Name="GENDER" Type="int" Mode="In" />
+          <Parameter Name="ADDRESS" Type="varchar" Mode="In" />
+          <Parameter Name="CONTACTEMAIL" Type="varchar" Mode="In" />
+          <Parameter Name="CONTACTMOBILE" Type="decimal" Mode="In" />
+          <Parameter Name="ADDITIONALCOMMENTS" Type="varchar" Mode="In" />
+          <Parameter Name="ISRESGISTERED" Type="bit" Mode="In" />
+          <Parameter Name="ISACTIVE" Type="bit" Mode="In" />
+          <Parameter Name="PASSWORDGENERATED" Type="bit" Mode="In" />
+          <Parameter Name="FLAG" Type="char" Mode="In" />
+        </Function>
+        <Function Name="USP_COUNTRYDATA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NAME" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="uspGetStudentss" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="ModelsStoreContainer">
+          <EntitySet Name="CityMaster" EntityType="Self.CityMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CountryMaster" EntityType="Self.CountryMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Registrations" EntityType="Self.Registrations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StateMaster" EntityType="Self.StateMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Gender_Master" EntityType="Self.tbl_Gender_Master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Password_Log" EntityType="Self.Tbl_Password_Log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_std_pass" EntityType="Self.tbl_std_pass" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_StudentInfo" EntityType="Self.tbl_StudentInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_UserPassword" EntityType="Self.Tbl_UserPassword" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_UserRoles" EntityType="Self.Tbl_UserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCustomers" EntityType="Self.tblCustomers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerRawInfo" EntityType="Self.CustomerRawInfo" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CustomerRawInfo].[CustomerId] AS [CustomerId], 
+    [CustomerRawInfo].[CustomerName] AS [CustomerName], 
+    [CustomerRawInfo].[Email] AS [Email], 
+    [CustomerRawInfo].[Company] AS [Company], 
+    [CustomerRawInfo].[Street] AS [Street], 
+    [CustomerRawInfo].[City] AS [City], 
+    [CustomerRawInfo].[Region] AS [Region], 
+    [CustomerRawInfo].[Country] AS [Country], 
+    [CustomerRawInfo].[IsActive] AS [IsActive]
+    FROM [dbo].[CustomerRawInfo] AS [CustomerRawInfo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbl_ColorTable" EntityType="Self.tbl_ColorTable" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_ColorTable].[Id] AS [Id], 
+    [tbl_ColorTable].[Name] AS [Name], 
+    [tbl_ColorTable].[HexCode] AS [HexCode], 
+    [tbl_ColorTable].[DecimalCode] AS [DecimalCode]
+    FROM [dbo].[tbl_ColorTable] AS [tbl_ColorTable]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Tbl_Customers_M" EntityType="Self.Tbl_Customers_M" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Tbl_Customers_M].[Id] AS [Id], 
+    [Tbl_Customers_M].[CUSTOMER_CODE] AS [CUSTOMER_CODE], 
+    [Tbl_Customers_M].[TITLE] AS [TITLE], 
+    [Tbl_Customers_M].[CUSTOMER_NAME] AS [CUSTOMER_NAME], 
+    [Tbl_Customers_M].[ADDRESS1] AS [ADDRESS1], 
+    [Tbl_Customers_M].[ADDRESS2] AS [ADDRESS2], 
+    [Tbl_Customers_M].[ADDRESS3] AS [ADDRESS3], 
+    [Tbl_Customers_M].[CITY] AS [CITY], 
+    [Tbl_Customers_M].[District] AS [District], 
+    [Tbl_Customers_M].[REGION] AS [REGION], 
+    [Tbl_Customers_M].[GST_STATE_NAME] AS [GST_STATE_NAME], 
+    [Tbl_Customers_M].[GST_Tin_Number] AS [GST_Tin_Number], 
+    [Tbl_Customers_M].[REGION_DESC] AS [REGION_DESC], 
+    [Tbl_Customers_M].[POSTAL_CODE] AS [POSTAL_CODE], 
+    [Tbl_Customers_M].[GST_NUMBER] AS [GST_NUMBER], 
+    [Tbl_Customers_M].[PAN_NO] AS [PAN_NO], 
+    [Tbl_Customers_M].[Segment_Name] AS [Segment_Name], 
+    [Tbl_Customers_M].[Sales_Office] AS [Sales_Office], 
+    [Tbl_Customers_M].[HQCODE] AS [HQCODE], 
+    [Tbl_Customers_M].[HQNAME] AS [HQNAME], 
+    [Tbl_Customers_M].[Moblie_No] AS [Moblie_No], 
+    [Tbl_Customers_M].[EmailId] AS [EmailId], 
+    [Tbl_Customers_M].[TransDate] AS [TransDate]
+    FROM [dbo].[Tbl_Customers_M] AS [Tbl_Customers_M]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbl_Emp_Password" EntityType="Self.tbl_Emp_Password" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_Emp_Password].[Id] AS [Id], 
+    [tbl_Emp_Password].[EmpId] AS [EmpId], 
+    [tbl_Emp_Password].[Password] AS [Password], 
+    [tbl_Emp_Password].[IsActive] AS [IsActive], 
+    [tbl_Emp_Password].[CreatedOn] AS [CreatedOn], 
+    [tbl_Emp_Password].[UpdatedOn] AS [UpdatedOn]
+    FROM [dbo].[tbl_Emp_Password] AS [tbl_Emp_Password]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_CityMaster_StateMaster" Association="Self.FK_CityMaster_StateMaster">
+            <End Role="StateMaster" EntitySet="StateMaster" />
+            <End Role="CityMaster" EntitySet="CityMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registrations_tbl_Gender_Master" Association="Self.FK_Registrations_tbl_Gender_Master">
+            <End Role="tbl_Gender_Master" EntitySet="tbl_Gender_Master" />
+            <End Role="Registrations" EntitySet="Registrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StateMaster_CountryMaster" Association="Self.FK_StateMaster_CountryMaster">
+            <End Role="CountryMaster" EntitySet="CountryMaster" />
+            <End Role="StateMaster" EntitySet="StateMaster" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Models" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CityMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StateID" Type="Int32" />
+          <NavigationProperty Name="StateMaster" Relationship="Self.FK_CityMaster_StateMaster" FromRole="CityMaster" ToRole="StateMaster" />
+        </EntityType>
+        <EntityType Name="CountryMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="StateMasters" Relationship="Self.FK_StateMaster_CountryMaster" FromRole="CountryMaster" ToRole="StateMaster" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomersID" />
+          </Key>
+          <Property Name="CustomersID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SurName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Full_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DOJ" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Company" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Registration">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="RegId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentId" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StdFirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StdLastName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StdPassword" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StdEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StdMobile" Type="Decimal" Precision="12" Scale="0" Nullable="false" />
+          <Property Name="StdAddress" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StdGender" Type="Int32" Nullable="false" />
+          <Property Name="StdDateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="StdState" Type="Int32" Nullable="false" />
+          <Property Name="StdCountry" Type="Int32" Nullable="false" />
+          <Property Name="StdProfilePic" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StdCreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="StdRegisteredDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tbl_Gender_Master" Relationship="Self.FK_Registrations_tbl_Gender_Master" FromRole="Registrations" ToRole="tbl_Gender_Master" />
+        </EntityType>
+        <EntityType Name="StateMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryID" Type="Int32" />
+          <NavigationProperty Name="CityMasters" Relationship="Self.FK_CityMaster_StateMaster" FromRole="StateMaster" ToRole="CityMaster" />
+          <NavigationProperty Name="CountryMaster" Relationship="Self.FK_StateMaster_CountryMaster" FromRole="StateMaster" ToRole="CountryMaster" />
+        </EntityType>
+        <EntityType Name="tbl_Gender_Master">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Registrations" Relationship="Self.FK_Registrations_tbl_Gender_Master" FromRole="tbl_Gender_Master" ToRole="Registrations" />
+        </EntityType>
+        <EntityType Name="Tbl_Password_Log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HashCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ExpiredOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_std_pass">
+          <Key>
+            <PropertyRef Name="StdId" />
+          </Key>
+          <Property Name="StdId" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PassHash" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_StudentInfo">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentId" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StudentName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="Gender" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ContactEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactMobile" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="AdditionalComments" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="IsResgistered" Type="Boolean" />
+          <Property Name="ResgisteredDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="PasswordGenerated" Type="Boolean" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Tbl_UserPassword">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HashCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ExpireDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_UserRoles">
+          <Key>
+            <PropertyRef Name="UserRoleId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserRoleId" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserRoleName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblCustomer">
+          <Key>
+            <PropertyRef Name="tblCustomersID" />
+          </Key>
+          <Property Name="tblCustomersID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Guid" />
+          <Property Name="SurName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EmailId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DOJ" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Roles" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CustomerRawInfo">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Company" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Street" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Region" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tbl_ColorTable">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="HexCode" />
+            <PropertyRef Name="DecimalCode" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HexCode" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DecimalCode" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Customers_M">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CUSTOMER_CODE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TITLE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CUSTOMER_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESS1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESS2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESS3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CITY" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="District" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="REGION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="GST_STATE_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="GST_Tin_Number" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="REGION_DESC" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="POSTAL_CODE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="GST_NUMBER" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PAN_NO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Segment_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Sales_Office" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="HQCODE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="HQNAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Moblie_No" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EmailId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TransDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_Emp_Password">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK_CityMaster_StateMaster">
+          <End Role="StateMaster" Type="Self.StateMaster" Multiplicity="0..1" />
+          <End Role="CityMaster" Type="Self.CityMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StateMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CityMaster">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StateMaster_CountryMaster">
+          <End Role="CountryMaster" Type="Self.CountryMaster" Multiplicity="0..1" />
+          <End Role="StateMaster" Type="Self.StateMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StateMaster">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registrations_tbl_Gender_Master">
+          <End Role="tbl_Gender_Master" Type="Self.tbl_Gender_Master" Multiplicity="1" />
+          <End Role="Registrations" Type="Self.Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Gender_Master">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Registrations">
+              <PropertyRef Name="StdGender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="UserDBContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CityMasters" EntityType="Self.CityMaster" />
+          <EntitySet Name="CountryMasters" EntityType="Self.CountryMaster" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="Registrations" EntityType="Self.Registration" />
+          <EntitySet Name="StateMasters" EntityType="Self.StateMaster" />
+          <EntitySet Name="tbl_Gender_Master" EntityType="Self.tbl_Gender_Master" />
+          <EntitySet Name="Tbl_Password_Log" EntityType="Self.Tbl_Password_Log" />
+          <EntitySet Name="tbl_std_pass" EntityType="Self.tbl_std_pass" />
+          <EntitySet Name="tbl_StudentInfo" EntityType="Self.tbl_StudentInfo" />
+          <EntitySet Name="Tbl_UserPassword" EntityType="Self.Tbl_UserPassword" />
+          <EntitySet Name="Tbl_UserRoles" EntityType="Self.Tbl_UserRoles" />
+          <EntitySet Name="tblCustomers" EntityType="Self.tblCustomer" />
+          <EntitySet Name="USERS" EntityType="Self.USER" />
+          <EntitySet Name="CustomerRawInfoes" EntityType="Self.CustomerRawInfo" />
+          <EntitySet Name="tbl_ColorTable" EntityType="Self.tbl_ColorTable" />
+          <EntitySet Name="Tbl_Customers_M" EntityType="Self.Tbl_Customers_M" />
+          <EntitySet Name="tbl_Emp_Password" EntityType="Self.tbl_Emp_Password" />
+          <AssociationSet Name="FK_CityMaster_StateMaster" Association="Self.FK_CityMaster_StateMaster">
+            <End Role="StateMaster" EntitySet="StateMasters" />
+            <End Role="CityMaster" EntitySet="CityMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StateMaster_CountryMaster" Association="Self.FK_StateMaster_CountryMaster">
+            <End Role="CountryMaster" EntitySet="CountryMasters" />
+            <End Role="StateMaster" EntitySet="StateMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registrations_tbl_Gender_Master" Association="Self.FK_Registrations_tbl_Gender_Master">
+            <End Role="tbl_Gender_Master" EntitySet="tbl_Gender_Master" />
+            <End Role="Registrations" EntitySet="Registrations" />
+          </AssociationSet>
+          <FunctionImport Name="SP_GET_PRODUCT_DETAILS" ReturnType="Collection(Models.SP_GET_PRODUCT_DETAILS_Result)">
+            <Parameter Name="PRODUCTID" Mode="In" Type="String" />
+            <Parameter Name="CATEGORY" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GET_PRODUCT_INFO" ReturnType="Collection(Models.SP_GET_PRODUCT_INFO_Result)" />
+          <FunctionImport Name="SP_INSERT_PRODUCT_INFO">
+            <Parameter Name="PRODUCTID" Mode="In" Type="String" />
+            <Parameter Name="CATEGORY" Mode="In" Type="String" />
+            <Parameter Name="MAINCATEGORY" Mode="In" Type="String" />
+            <Parameter Name="TAXTAFFICCODE" Mode="In" Type="String" />
+            <Parameter Name="SUPPLIERNAME" Mode="In" Type="String" />
+            <Parameter Name="WEIGHTMEASURE" Mode="In" Type="String" />
+            <Parameter Name="WEIGHTUNIT" Mode="In" Type="String" />
+            <Parameter Name="DESCRIPTION" Mode="In" Type="String" />
+            <Parameter Name="NAME" Mode="In" Type="String" />
+            <Parameter Name="DATEOFSALE" Mode="In" Type="String" />
+            <Parameter Name="PRODUCTPICURL" Mode="In" Type="String" />
+            <Parameter Name="STATUS" Mode="In" Type="String" />
+            <Parameter Name="QUANTITY" Mode="In" Type="String" />
+            <Parameter Name="UOM" Mode="In" Type="String" />
+            <Parameter Name="CURRENCYCODE" Mode="In" Type="String" />
+            <Parameter Name="PRICE" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_SAVESTUDENTREGISTERDETAILS" ReturnType="Collection(Models.SP_SAVESTUDENTREGISTERDETAILS_Result)">
+            <Parameter Name="STUDENTID" Mode="In" Type="String" />
+            <Parameter Name="STUDENTNAME" Mode="In" Type="String" />
+            <Parameter Name="DATEOFBIRTH" Mode="In" Type="DateTime" />
+            <Parameter Name="GENDER" Mode="In" Type="Int32" />
+            <Parameter Name="ADDRESS" Mode="In" Type="String" />
+            <Parameter Name="CONTACTEMAIL" Mode="In" Type="String" />
+            <Parameter Name="CONTACTMOBILE" Mode="In" Type="Decimal" />
+            <Parameter Name="ADDITIONALCOMMENTS" Mode="In" Type="String" />
+            <Parameter Name="ISRESGISTERED" Mode="In" Type="Boolean" />
+            <Parameter Name="ISACTIVE" Mode="In" Type="Boolean" />
+            <Parameter Name="PASSWORDGENERATED" Mode="In" Type="Boolean" />
+            <Parameter Name="FLAG" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="USP_COUNTRYDATA" ReturnType="Collection(Models.USP_COUNTRYDATA_Result)">
+            <Parameter Name="NAME" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="uspGetStudentss" ReturnType="Collection(Models.uspGetStudentss_Result)" />
+        </EntityContainer>
+        <ComplexType Name="SP_GET_PRODUCT_DETAILS_Result">
+          <Property Type="String" Name="PRODUCTID" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CATEGORY" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MAINCATEGORY" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TAXTAFFICCODE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SUPPLIERNAME" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="WEIGHTMEASURE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="WEIGHTUNIT" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DESCRIPTION" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="NAME" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DATEOFSALE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PRODUCTPICURL" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="STATUS" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="QUANTITY" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="UOM" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CURRENCYCODE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PRICE" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_GET_PRODUCT_INFO_Result">
+          <Property Type="String" Name="PRODUCTID" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CATEGORY" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MAINCATEGORY" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TAXTAFFICCODE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SUPPLIERNAME" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="WEIGHTMEASURE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="WEIGHTUNIT" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DESCRIPTION" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="NAME" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DATEOFSALE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PRODUCTPICURL" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="STATUS" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="QUANTITY" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="UOM" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CURRENCYCODE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PRICE" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_SAVESTUDENTREGISTERDETAILS_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="STUDENTID" Nullable="false" MaxLength="35" />
+          <Property Type="String" Name="STUDENTNAME" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="DATEOFBIRTH" Nullable="true" />
+          <Property Type="Int32" Name="GENDER" Nullable="true" />
+          <Property Type="String" Name="ADDRESS" Nullable="true" MaxLength="1000" />
+          <Property Type="String" Name="CONTACTEMAIL" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="CONTACTMOBILE" Nullable="true" Precision="10" Scale="0" />
+          <Property Type="String" Name="ADDITIONALCOMMENTS" Nullable="true" MaxLength="1000" />
+          <Property Type="Boolean" Name="ISRESGISTERED" Nullable="true" />
+          <Property Type="DateTime" Name="RESGISTEREDDATE" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="ISACTIVE" Nullable="true" />
+          <Property Type="Boolean" Name="PASSWORDGENERATED" Nullable="true" />
+          <Property Type="DateTime" Name="CREATEDON" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="USP_COUNTRYDATA_Result">
+          <Property Type="String" Name="COUNTRY" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="STATE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CITY" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="uspGetStudentss_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="StudentId" Nullable="false" MaxLength="35" />
+          <Property Type="String" Name="StudentName" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="DateOfBirth" Nullable="true" />
+          <Property Type="Int32" Name="Gender" Nullable="true" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="1000" />
+          <Property Type="String" Name="ContactEmail" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="ContactMobile" Nullable="true" Precision="10" Scale="0" />
+          <Property Type="String" Name="AdditionalComments" Nullable="true" MaxLength="1000" />
+          <Property Type="Boolean" Name="IsResgistered" Nullable="true" />
+          <Property Type="DateTime" Name="ResgisteredDate" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+          <Property Type="Boolean" Name="PasswordGenerated" Nullable="true" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="true" Precision="23" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelsStoreContainer" CdmEntityContainer="UserDBContext">
+          <EntitySetMapping Name="CityMasters">
+            <EntityTypeMapping TypeName="Models.CityMaster">
+              <MappingFragment StoreEntitySet="CityMaster">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CountryMasters">
+            <EntityTypeMapping TypeName="Models.CountryMaster">
+              <MappingFragment StoreEntitySet="CountryMaster">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="Models.Customer">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="CustomersID" ColumnName="CustomersID" />
+                <ScalarProperty Name="SurName" ColumnName="SurName" />
+                <ScalarProperty Name="Full_Name" ColumnName="Full Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DOJ" ColumnName="DOJ" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Registrations">
+            <EntityTypeMapping TypeName="Models.Registration">
+              <MappingFragment StoreEntitySet="Registrations">
+                <ScalarProperty Name="RegId" ColumnName="RegId" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="StdFirstName" ColumnName="StdFirstName" />
+                <ScalarProperty Name="StdLastName" ColumnName="StdLastName" />
+                <ScalarProperty Name="StdPassword" ColumnName="StdPassword" />
+                <ScalarProperty Name="StdEmail" ColumnName="StdEmail" />
+                <ScalarProperty Name="StdMobile" ColumnName="StdMobile" />
+                <ScalarProperty Name="StdAddress" ColumnName="StdAddress" />
+                <ScalarProperty Name="StdGender" ColumnName="StdGender" />
+                <ScalarProperty Name="StdDateOfBirth" ColumnName="StdDateOfBirth" />
+                <ScalarProperty Name="StdState" ColumnName="StdState" />
+                <ScalarProperty Name="StdCountry" ColumnName="StdCountry" />
+                <ScalarProperty Name="StdProfilePic" ColumnName="StdProfilePic" />
+                <ScalarProperty Name="StdCreatedDate" ColumnName="StdCreatedDate" />
+                <ScalarProperty Name="StdRegisteredDate" ColumnName="StdRegisteredDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StateMasters">
+            <EntityTypeMapping TypeName="Models.StateMaster">
+              <MappingFragment StoreEntitySet="StateMaster">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Gender_Master">
+            <EntityTypeMapping TypeName="Models.tbl_Gender_Master">
+              <MappingFragment StoreEntitySet="tbl_Gender_Master">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Password_Log">
+            <EntityTypeMapping TypeName="Models.Tbl_Password_Log">
+              <MappingFragment StoreEntitySet="Tbl_Password_Log">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="HashCode" ColumnName="HashCode" />
+                <ScalarProperty Name="ExpiredOn" ColumnName="ExpiredOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_std_pass">
+            <EntityTypeMapping TypeName="Models.tbl_std_pass">
+              <MappingFragment StoreEntitySet="tbl_std_pass">
+                <ScalarProperty Name="StdId" ColumnName="StdId" />
+                <ScalarProperty Name="PassHash" ColumnName="PassHash" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_StudentInfo">
+            <EntityTypeMapping TypeName="Models.tbl_StudentInfo">
+              <MappingFragment StoreEntitySet="tbl_StudentInfo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
+                <ScalarProperty Name="ContactMobile" ColumnName="ContactMobile" />
+                <ScalarProperty Name="AdditionalComments" ColumnName="AdditionalComments" />
+                <ScalarProperty Name="IsResgistered" ColumnName="IsResgistered" />
+                <ScalarProperty Name="ResgisteredDate" ColumnName="ResgisteredDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="PasswordGenerated" ColumnName="PasswordGenerated" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_UserPassword">
+            <EntityTypeMapping TypeName="Models.Tbl_UserPassword">
+              <MappingFragment StoreEntitySet="Tbl_UserPassword">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="HashCode" ColumnName="HashCode" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_UserRoles">
+            <EntityTypeMapping TypeName="Models.Tbl_UserRoles">
+              <MappingFragment StoreEntitySet="Tbl_UserRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
+                <ScalarProperty Name="UserRoleName" ColumnName="UserRoleName" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCustomers">
+            <EntityTypeMapping TypeName="Models.tblCustomer">
+              <MappingFragment StoreEntitySet="tblCustomers">
+                <ScalarProperty Name="tblCustomersID" ColumnName="tblCustomersID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SurName" ColumnName="SurName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="DOJ" ColumnName="DOJ" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERS">
+            <EntityTypeMapping TypeName="Models.USER">
+              <MappingFragment StoreEntitySet="USERS">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Roles" ColumnName="Roles" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerRawInfoes">
+            <EntityTypeMapping TypeName="Models.CustomerRawInfo">
+              <MappingFragment StoreEntitySet="CustomerRawInfo">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ColorTable">
+            <EntityTypeMapping TypeName="Models.tbl_ColorTable">
+              <MappingFragment StoreEntitySet="tbl_ColorTable">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="HexCode" ColumnName="HexCode" />
+                <ScalarProperty Name="DecimalCode" ColumnName="DecimalCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Customers_M">
+            <EntityTypeMapping TypeName="Models.Tbl_Customers_M">
+              <MappingFragment StoreEntitySet="Tbl_Customers_M">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CUSTOMER_CODE" ColumnName="CUSTOMER_CODE" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="CUSTOMER_NAME" ColumnName="CUSTOMER_NAME" />
+                <ScalarProperty Name="ADDRESS1" ColumnName="ADDRESS1" />
+                <ScalarProperty Name="ADDRESS2" ColumnName="ADDRESS2" />
+                <ScalarProperty Name="ADDRESS3" ColumnName="ADDRESS3" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="REGION" ColumnName="REGION" />
+                <ScalarProperty Name="GST_STATE_NAME" ColumnName="GST_STATE_NAME" />
+                <ScalarProperty Name="GST_Tin_Number" ColumnName="GST_Tin_Number" />
+                <ScalarProperty Name="REGION_DESC" ColumnName="REGION_DESC" />
+                <ScalarProperty Name="POSTAL_CODE" ColumnName="POSTAL_CODE" />
+                <ScalarProperty Name="GST_NUMBER" ColumnName="GST_NUMBER" />
+                <ScalarProperty Name="PAN_NO" ColumnName="PAN_NO" />
+                <ScalarProperty Name="Segment_Name" ColumnName="Segment_Name" />
+                <ScalarProperty Name="Sales_Office" ColumnName="Sales_Office" />
+                <ScalarProperty Name="HQCODE" ColumnName="HQCODE" />
+                <ScalarProperty Name="HQNAME" ColumnName="HQNAME" />
+                <ScalarProperty Name="Moblie_No" ColumnName="Moblie_No" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="TransDate" ColumnName="TransDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Emp_Password">
+            <EntityTypeMapping TypeName="Models.tbl_Emp_Password">
+              <MappingFragment StoreEntitySet="tbl_Emp_Password">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_GET_PRODUCT_DETAILS" FunctionName="Models.Store.SP_GET_PRODUCT_DETAILS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Models.SP_GET_PRODUCT_DETAILS_Result">
+                <ScalarProperty Name="PRODUCTID" ColumnName="PRODUCTID" />
+                <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
+                <ScalarProperty Name="MAINCATEGORY" ColumnName="MAINCATEGORY" />
+                <ScalarProperty Name="TAXTAFFICCODE" ColumnName="TAXTAFFICCODE" />
+                <ScalarProperty Name="SUPPLIERNAME" ColumnName="SUPPLIERNAME" />
+                <ScalarProperty Name="WEIGHTMEASURE" ColumnName="WEIGHTMEASURE" />
+                <ScalarProperty Name="WEIGHTUNIT" ColumnName="WEIGHTUNIT" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="DATEOFSALE" ColumnName="DATEOFSALE" />
+                <ScalarProperty Name="PRODUCTPICURL" ColumnName="PRODUCTPICURL" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="UOM" ColumnName="UOM" />
+                <ScalarProperty Name="CURRENCYCODE" ColumnName="CURRENCYCODE" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_GET_PRODUCT_INFO" FunctionName="Models.Store.SP_GET_PRODUCT_INFO">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Models.SP_GET_PRODUCT_INFO_Result">
+                <ScalarProperty Name="PRODUCTID" ColumnName="PRODUCTID" />
+                <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
+                <ScalarProperty Name="MAINCATEGORY" ColumnName="MAINCATEGORY" />
+                <ScalarProperty Name="TAXTAFFICCODE" ColumnName="TAXTAFFICCODE" />
+                <ScalarProperty Name="SUPPLIERNAME" ColumnName="SUPPLIERNAME" />
+                <ScalarProperty Name="WEIGHTMEASURE" ColumnName="WEIGHTMEASURE" />
+                <ScalarProperty Name="WEIGHTUNIT" ColumnName="WEIGHTUNIT" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="DATEOFSALE" ColumnName="DATEOFSALE" />
+                <ScalarProperty Name="PRODUCTPICURL" ColumnName="PRODUCTPICURL" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="UOM" ColumnName="UOM" />
+                <ScalarProperty Name="CURRENCYCODE" ColumnName="CURRENCYCODE" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_INSERT_PRODUCT_INFO" FunctionName="Models.Store.SP_INSERT_PRODUCT_INFO" />
+          <FunctionImportMapping FunctionImportName="SP_SAVESTUDENTREGISTERDETAILS" FunctionName="Models.Store.SP_SAVESTUDENTREGISTERDETAILS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Models.SP_SAVESTUDENTREGISTERDETAILS_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="STUDENTID" ColumnName="STUDENTID" />
+                <ScalarProperty Name="STUDENTNAME" ColumnName="STUDENTNAME" />
+                <ScalarProperty Name="DATEOFBIRTH" ColumnName="DATEOFBIRTH" />
+                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="CONTACTEMAIL" ColumnName="CONTACTEMAIL" />
+                <ScalarProperty Name="CONTACTMOBILE" ColumnName="CONTACTMOBILE" />
+                <ScalarProperty Name="ADDITIONALCOMMENTS" ColumnName="ADDITIONALCOMMENTS" />
+                <ScalarProperty Name="ISRESGISTERED" ColumnName="ISRESGISTERED" />
+                <ScalarProperty Name="RESGISTEREDDATE" ColumnName="RESGISTEREDDATE" />
+                <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+                <ScalarProperty Name="PASSWORDGENERATED" ColumnName="PASSWORDGENERATED" />
+                <ScalarProperty Name="CREATEDON" ColumnName="CREATEDON" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_COUNTRYDATA" FunctionName="Models.Store.USP_COUNTRYDATA">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Models.USP_COUNTRYDATA_Result">
+                <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
+                <ScalarProperty Name="STATE" ColumnName="STATE" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspGetStudentss" FunctionName="Models.Store.uspGetStudentss">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Models.uspGetStudentss_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
+                <ScalarProperty Name="ContactMobile" ColumnName="ContactMobile" />
+                <ScalarProperty Name="AdditionalComments" ColumnName="AdditionalComments" />
+                <ScalarProperty Name="IsResgistered" ColumnName="IsResgistered" />
+                <ScalarProperty Name="ResgisteredDate" ColumnName="ResgisteredDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="PasswordGenerated" ColumnName="PasswordGenerated" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
