@@ -15,10 +15,10 @@ namespace MVCAuthorization.Repository
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class UserDBContext : DbContext
+    public partial class UserDBContext2 : DbContext
     {
-        public UserDBContext()
-            : base("name=UserDBContext")
+        public UserDBContext2()
+            : base("name=UserDBContext2")
         {
         }
     

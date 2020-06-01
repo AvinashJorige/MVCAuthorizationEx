@@ -18,7 +18,7 @@ namespace MVCAuthorization.Repository
     public partial class UserDBContext : DbContext
     {
         public UserDBContext()
-            : base("name=UserDBContext")
+            : base("name=UserDBContext2")
         {
         }
     

@@ -65,9 +65,6 @@ namespace MVCAuthorization.Controllers
 
         //
         // POST: /Account/Login
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
         //public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         //{
         //    if (!ModelState.IsValid)
@@ -93,6 +90,9 @@ namespace MVCAuthorization.Controllers
         //    }
         //}
 
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public ActionResult Login(LoginViewModel model, string returnUrl)
         {
             if (!ModelState.IsValid)
@@ -106,7 +106,28 @@ namespace MVCAuthorization.Controllers
 
             if(user != null)
             {
-                FormsAuthentication.SetAuthCookie(user.UserName, model.RememberMe);''
+                // create form authentication ticket for the username and adds to the cookies collection in response or to url of ur using cookieless authentication
+                FormsAuthentication.SetAuthCookie(user.UserName, model.RememberMe);
+                FormsAuthentication.SetAuthCookie(Convert.ToString(user.UserID), model.RememberMe);
+
+                // intializes the formauthentication ticket for the version, username, issuedate, expire date, persistace, and user-specific data
+                var authTicket = new FormsAuthenticationTicket(1, user.UserName, DateTime.Now, DateTime.Now.AddMinutes(6), false, user.Roles);
+
+                // creates encrypted formauthentication ticket suitable to http cookies.
+                string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
+
+                // creates, names and assign value to new cookies
+                var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+
+                // add the authcookies to response cookies collections
+                HttpContext.Response.Cookies.Add(authCookie);
+
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Invalid login attempt.");
+                return View(model);
             }
         }
 
@@ -411,8 +432,17 @@ namespace MVCAuthorization.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            //AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            //return RedirectToAction("Index", "Home");
+
+            FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
+        }
+
+        [AllowAnonymous]
+        public ActionResult AccessDenied()
+        {
+            return View();
         }
 
         //
